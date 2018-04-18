@@ -27,6 +27,7 @@ import com.android.systemui.plugins.qs.QSTileView;
 import com.android.systemui.qs.QSTileHost;
 import com.android.systemui.qs.external.CustomTile;
 import com.android.systemui.qs.tiles.AirplaneModeTile;
+import com.android.systemui.qs.tiles.AODTile;
 import com.android.systemui.qs.tiles.BatterySaverTile;
 import com.android.systemui.qs.tiles.BluetoothTile;
 import com.android.systemui.qs.tiles.CaffeineTile;
@@ -98,6 +99,7 @@ public class QSFactoryImpl implements QSFactory {
     private final Provider<DataSwitchTile> mDataSwitchTileProvider;
     private final Provider<VpnTile> mVpnTileProvider;
     private final Provider<LiveDisplayTile> mLiveDisplayTileProvider;
+    private final Provider<AODTile> mAODTileProvider;
 
     private QSTileHost mHost;
 
@@ -129,7 +131,8 @@ public class QSFactoryImpl implements QSFactory {
             Provider<ScreenRecordTile> screenRecordTileProvider,
             Provider<DataSwitchTile> dataSwitchTileProvider,
             Provider<VpnTile> vpnTileProvider,
-            Provider<LiveDisplayTile> liveDisplayTileProvider) {
+            Provider<LiveDisplayTile> liveDisplayTileProvider,
+            Provider<AODTile> aodTileProvider) {
         mWifiTileProvider = wifiTileProvider;
         mBluetoothTileProvider = bluetoothTileProvider;
         mCellularTileProvider = cellularTileProvider;
@@ -158,6 +161,7 @@ public class QSFactoryImpl implements QSFactory {
         mDataSwitchTileProvider = dataSwitchTileProvider;
         mVpnTileProvider = vpnTileProvider;
         mLiveDisplayTileProvider = liveDisplayTileProvider;
+        mAODTileProvider = aodTileProvider;
     }
 
     public void setHost(QSTileHost host) {
@@ -211,6 +215,7 @@ public class QSFactoryImpl implements QSFactory {
                 return mNfcTileProvider.get();
             case "dark":
                 return mUiModeNightTileProvider.get();
+<<<<<<< HEAD
             case "smartpixels":
                 return mSmartPixelsTileProvider.get();
             case "sound":
@@ -239,6 +244,8 @@ public class QSFactoryImpl implements QSFactory {
                 return new RebootTile(mHost);
             case "livedisplay":
                 return mLiveDisplayTileProvider.get();
+            case "aod":
+                return mAODTileProvider.get();
         }
 
         // Intent tiles.
