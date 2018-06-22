@@ -41,6 +41,7 @@ import com.android.systemui.qs.tiles.FlashlightTile;
 import com.android.systemui.qs.tiles.GamingModeTile;
 import com.android.systemui.qs.tiles.HeadsUpTile;
 import com.android.systemui.qs.tiles.HotspotTile;
+import com.android.systemui.qs.tiles.ImmersiveTile;
 import com.android.systemui.qs.tiles.IntentTile;
 import com.android.systemui.qs.tiles.LiveDisplayTile;
 import com.android.systemui.qs.tiles.LocationTile;
@@ -100,6 +101,7 @@ public class QSFactoryImpl implements QSFactory {
     private final Provider<VpnTile> mVpnTileProvider;
     private final Provider<LiveDisplayTile> mLiveDisplayTileProvider;
     private final Provider<AODTile> mAODTileProvider;
+    private final Provider<ImmersiveTile> mImmersiveTileProvider;
 
     private QSTileHost mHost;
 
@@ -132,7 +134,8 @@ public class QSFactoryImpl implements QSFactory {
             Provider<DataSwitchTile> dataSwitchTileProvider,
             Provider<VpnTile> vpnTileProvider,
             Provider<LiveDisplayTile> liveDisplayTileProvider,
-            Provider<AODTile> aodTileProvider) {
+            Provider<AODTile> aodTileProvider,
+            Provider<ImmersiveTile> immersiveTileProvider) {
         mWifiTileProvider = wifiTileProvider;
         mBluetoothTileProvider = bluetoothTileProvider;
         mCellularTileProvider = cellularTileProvider;
@@ -162,6 +165,7 @@ public class QSFactoryImpl implements QSFactory {
         mVpnTileProvider = vpnTileProvider;
         mLiveDisplayTileProvider = liveDisplayTileProvider;
         mAODTileProvider = aodTileProvider;
+        mImmersiveTileProvider = immersiveTileProvider;
     }
 
     public void setHost(QSTileHost host) {
@@ -234,6 +238,7 @@ public class QSFactoryImpl implements QSFactory {
                 return mHeadsUpTileProvider.get();
             case "screenrecord":
                 return mScreenRecordTileProvider.get();
+<<<<<<< HEAD
             case "sync":
                 return new SyncTile(mHost);
             case "dataswitch":
@@ -246,6 +251,8 @@ public class QSFactoryImpl implements QSFactory {
                 return mLiveDisplayTileProvider.get();
             case "aod":
                 return mAODTileProvider.get();
+            case "immersive":
+                return mImmersiveTileProvider.get();
         }
 
         // Intent tiles.
