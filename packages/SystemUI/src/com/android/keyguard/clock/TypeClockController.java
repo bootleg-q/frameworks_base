@@ -233,4 +233,10 @@ public class TypeClockController implements ClockPlugin {
     public boolean shouldShowStatusArea() {
         return false;
     }
+
+    @Override
+    public void setTypeface(Typeface tf) {
+        mTypeClock.setTypeface(tf);
+        mLockClock.setTypeface(tf);
+    }
 }
