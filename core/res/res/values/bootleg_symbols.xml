@@ -134,12 +134,15 @@
     <java-symbol type="string" name="gaming_mode_enabled_toast" />
     <java-symbol type="string" name="gaming_mode_disabled_toast" />
 
-  <!-- Clipboard access toast -->
-  <java-symbol type="string" name="app_clipboard_access_denied" />
-  <java-symbol type="string" name="app_clipboard_access_granted" />
+    <!-- Clipboard access toast -->
+    <java-symbol type="string" name="app_clipboard_access_denied" />
+    <java-symbol type="string" name="app_clipboard_access_granted" />
 
     <!-- String to show toast message on clipboard -->
     <java-symbol type="string" name="clipboard_in_use_toast" />
+
+    <!-- System fonts -->
+    <java-symbol type="array" name="config_fontPackages" />
 
     <!-- LiveDisplay -->
     <java-symbol type="string" name="live_display_title" />

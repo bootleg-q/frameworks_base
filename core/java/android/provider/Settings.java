@@ -5718,7 +5718,6 @@ public final class Settings {
         private static final Validator HEADSET_CONNECT_PLAYER_VALIDATOR =
                 BOOLEAN_VALIDATOR;
 
-
         /**
          * @hide
          */
@@ -5863,6 +5862,18 @@ public final class Settings {
          * @hide
          */
         public static final String QS_SHOW_BATTERY_ESTIMATE = "qs_show_battery_estimate";
+
+        /**
+         * Hold current font name and name of the originating package Uses "|" as a delimiter
+         * @hide
+         */
+        public static final String FONT_INFO = "font_info";
+
+        /**
+         * Hold list of installed font provider packages. Uses "|" as a delimiter
+         * @hide
+         */
+        public static final String FONT_PACKAGES = "font_packages";
 
         /**
          * Did we tell about how they can stop breaking their eyes?
