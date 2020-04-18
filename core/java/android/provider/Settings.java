@@ -5921,6 +5921,14 @@ public final class Settings {
         public static final String QS_HEADER_STYLE = "qs_header_style";
 
         /**
+         * Controls whether to show R style notification headers
+         * @hide
+         */
+        public static final String NOTIFICATION_HEADERS = "notification_headers";
+
+        private static final Validator NOTIFICATION_HEADERS_VALIDATOR = BOOLEAN_VALIDATOR;
+
+        /**
          * Settings to backup. This is here so that it's in the same place as the settings
          * keys and easy to update.
          *
@@ -6033,6 +6041,7 @@ public final class Settings {
             STATUS_BAR_CUSTOM_HEADER_HEIGHT,
 	    SYSUI_KEYGUARD_SHOW_BATTERY_BAR,
             SYSUI_KEYGUARD_SHOW_BATTERY_BAR_ALWAYS,
+            NOTIFICATION_HEADERS,
         };
 
         /**
@@ -6423,6 +6432,7 @@ public final class Settings {
             VALIDATORS.put(STATUS_BAR_CUSTOM_HEADER_HEIGHT, STATUS_BAR_CUSTOM_HEADER_HEIGHT_VALIDATOR);
 	    VALIDATORS.put(SYSUI_KEYGUARD_SHOW_BATTERY_BAR, SYSUI_KEYGUARD_SHOW_BATTERY_BAR_VALIDATOR);
             VALIDATORS.put(SYSUI_KEYGUARD_SHOW_BATTERY_BAR_ALWAYS, SYSUI_KEYGUARD_SHOW_BATTERY_BAR_ALWAYS_VALIDATOR);
+            VALIDATORS.put(NOTIFICATION_HEADERS, NOTIFICATION_HEADERS_VALIDATOR);
         }
 
         /**
