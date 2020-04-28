@@ -189,8 +189,4 @@ public class SamsungBoldClockController implements ClockPlugin {
         return true;
     }
 
-    @Override
-    public void setTypeface(Typeface tf) {
-        mClock.setTypeface(tf);
-    }
 }
