@@ -94,4 +94,6 @@
     <!-- Custom Carrier Label -->
     <dimen name="status_bar_carrier_height">14dp</dimen>
 
+    <dimen name="battery_bar_view_height">6dp</dimen>
+
 </resources>
