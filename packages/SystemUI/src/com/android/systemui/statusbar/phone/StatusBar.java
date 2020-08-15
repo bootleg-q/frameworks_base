@@ -4328,7 +4328,8 @@ public class StatusBar extends SystemUI implements DemoMode, TunerService.Tunabl
 
         boolean launchingAffordanceWithPreview =
                 mNotificationPanel.isLaunchingAffordanceWithPreview();
-        mScrimController.setLaunchingAffordanceWithPreview(launchingAffordanceWithPreview);
+        mScrimController.setLaunchingAffordanceWithPreview(launchingAffordanceWithPreview
+                || mBiometricUnlockController.isWakeAndUnlock());
 
         if (mBouncerShowing) {
             // Bouncer needs the front scrim when it's on top of an activity,
