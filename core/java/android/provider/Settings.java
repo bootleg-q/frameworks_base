@@ -5958,6 +5958,13 @@ public final class Settings {
 
         /** @hide */
         private static final Validator QS_DATAUSAGE_VALIDATOR = ANY_INTEGER_VALIDATOR;
+        /**
+         * Whether to use new QS panel bg tint or not
+         * @hide
+         */
+        public static final String QS_PANEL_BG_USE_NEW_TINT = "qs_panel_bg_use_new_tint";
+        /** @hide */
+        private static final Validator QS_PANEL_BG_USE_NEW_TINT_VALIDATOR = BOOLEAN_VALIDATOR;
 
         /**
          * Settings to backup. This is here so that it's in the same place as the settings
@@ -5974,6 +5981,7 @@ public final class Settings {
             STAY_ON_WHILE_PLUGGED_IN,   // moved to global
             WIFI_USE_STATIC_IP,
             WIFI_STATIC_IP,
+            QS_PANEL_BG_USE_NEW_TINT,
             WIFI_STATIC_GATEWAY,
             WIFI_STATIC_NETMASK,
             WIFI_STATIC_DNS1,
@@ -6182,6 +6190,7 @@ public final class Settings {
         @UnsupportedAppUsage
         public static final Set<String> PRIVATE_SETTINGS = new ArraySet<>();
         static {
+            PRIVATE_SETTINGS.add(QS_PANEL_BG_USE_NEW_TINT);
             PRIVATE_SETTINGS.add(WIFI_USE_STATIC_IP);
             PRIVATE_SETTINGS.add(END_BUTTON_BEHAVIOR);
             PRIVATE_SETTINGS.add(ADVANCED_SETTINGS);
@@ -6309,6 +6318,7 @@ public final class Settings {
         @UnsupportedAppUsage
         public static final Map<String, Validator> VALIDATORS = new ArrayMap<>();
         static {
+          VALIDATORS.put(QS_PANEL_BG_USE_NEW_TINT, QS_PANEL_BG_USE_NEW_TINT_VALIDATOR);
             VALIDATORS.put(STAY_ON_WHILE_PLUGGED_IN, STAY_ON_WHILE_PLUGGED_IN_VALIDATOR);
             VALIDATORS.put(END_BUTTON_BEHAVIOR, END_BUTTON_BEHAVIOR_VALIDATOR);
             VALIDATORS.put(WIFI_USE_STATIC_IP, WIFI_USE_STATIC_IP_VALIDATOR);
