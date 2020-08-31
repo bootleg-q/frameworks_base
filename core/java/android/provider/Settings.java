@@ -5495,6 +5495,11 @@ public final class Settings {
          */
         public static final String LOCK_DATE_FONTS = "lock_date_fonts";
 
+	/**
+         * @hide
+         */
+        public static final String SWITCH_STYLE = "switch_style";
+
         /**
          * Whether the device introduction is completed
          * @hide

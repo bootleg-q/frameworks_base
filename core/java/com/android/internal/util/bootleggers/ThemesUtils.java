@@ -16,7 +16,29 @@
 
 package com.android.internal.util.bootleggers;
 
+import static android.os.UserHandle.USER_SYSTEM;
+
+import android.app.UiModeManager;
+import android.content.Context;
+import android.content.om.IOverlayManager;
+import android.content.om.OverlayInfo;
+import android.os.RemoteException;
+import android.os.ServiceManager;
+import android.provider.Settings;
+import android.os.RemoteException;
+import android.util.Log;
+
 public class ThemesUtils {
+
+    public static final String TAG = "ThemesUtils";
+
+    private static final String[] SWITCH_THEMES = {
+        "com.android.system.switch.stock", // 0
+        "com.android.system.switch.oneplus", // 1
+	"com.android.system.switch.narrow", // 2
+        "com.android.system.switch.contained", // 3
+	"com.android.system.switch.telegram", // 4
+    };
 
     public static final String[] QS_TILE_THEMES = {
             "default_qstile",
@@ -51,4 +73,28 @@ public class ThemesUtils {
         "com.android.systemui.qsheader.transparent", // 4
     };
 
+    public static void updateSwitchStyle(IOverlayManager om, int userId, int switchStyle) {
+        if (switchStyle == 0) {
+            stockSwitchStyle(om, userId);
+        } else {
+            try {
+                om.setEnabled(SWITCH_THEMES[switchStyle],
+                        true, userId);
+            } catch (RemoteException e) {
+                Log.w(TAG, "Can't change switch theme", e);
+            }
+        }
+    }
+
+    public static void stockSwitchStyle(IOverlayManager om, int userId) {
+        for (int i = 0; i < SWITCH_THEMES.length; i++) {
+            String switchtheme = SWITCH_THEMES[i];
+            try {
+                om.setEnabled(switchtheme,
+                        false /*disable*/, userId);
+            } catch (RemoteException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 }
