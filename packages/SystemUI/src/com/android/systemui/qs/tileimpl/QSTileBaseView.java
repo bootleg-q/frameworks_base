@@ -15,6 +15,7 @@ package com.android.systemui.qs.tileimpl;
 
 import static com.android.systemui.qs.tileimpl.QSIconViewImpl.QS_ANIM_LENGTH;
 
+import android.annotation.ColorInt;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.ValueAnimator;
@@ -73,7 +74,8 @@ public class QSTileBaseView extends com.android.systemui.plugins.qs.QSTileView {
     private final ImageView mBg;
     private final ImageView mMaskBg;
     private final ImageView mMaskFg;
-    private final int mColorActive;
+    private int mColorActive;
+    private int mColorActiveAlpha;
     private final int mColorInactive;
     private final int mColorDisabled;
     private int mCircleColor;
@@ -95,18 +97,13 @@ public class QSTileBaseView extends com.android.systemui.plugins.qs.QSTileView {
         mMaskBg = new ImageView(getContext());
         mMaskFg = new ImageView(getContext());
 
-        boolean enableQsTileTinting = context.getResources().getBoolean(R.bool.config_enable_qs_tile_tinting);
-        if (!enableQsTileTinting) {
-            mColorActive = Utils.getColorAttrDefaultColor(context, android.R.attr.colorAccent);
-            mColorDisabled = Utils.getDisabled(context,
-                    Utils.getColorAttrDefaultColor(context, android.R.attr.textColorTertiary));
-            mColorInactive = Utils.getColorAttrDefaultColor(context, android.R.attr.textColorSecondary);
-        } else {
-            mColorActive = context.getColor(R.color.qs_tiles_background_active_tint);
-            mColorDisabled = Utils.getDisabled(context,
-                    context.getColor(R.color.qs_tiles_background_disabled_tint));
-            mColorInactive = context.getColor(R.color.qs_tiles_background_inactive_tint);
-        }
+        mColorActive = Utils.getColorAttrDefaultColor(context, android.R.attr.colorAccent);
+        mColorActiveAlpha = adjustAlpha(mColorActive, 0.2f);
+        mColorActive = mColorActiveAlpha;
+        mColorDisabled = Utils.getDisabled(context,
+                Utils.getColorAttrDefaultColor(context, android.R.attr.textColorTertiary));
+        mColorInactive = Utils.getColorAttrDefaultColor(context, android.R.attr.textColorSecondary);
+
 
         int bgSize = context.getResources().getDimensionPixelSize(R.dimen.qs_tile_background_size);
         FrameLayout.LayoutParams lp = new FrameLayout.LayoutParams(bgSize, bgSize, Gravity.CENTER);
@@ -266,6 +263,15 @@ public class QSTileBaseView extends com.android.systemui.plugins.qs.QSTileView {
 
     public void onStateChanged(QSTile.State state) {
         mHandler.obtainMessage(H.STATE_CHANGED, state).sendToTarget();
+    }
+
+    @ColorInt
+    private static int adjustAlpha(@ColorInt int color, float factor) {
+        int alpha = Math.round(Color.alpha(color) * factor);
+        int red = Color.red(color);
+        int green = Color.green(color);
+        int blue = Color.blue(color);
+        return Color.argb(alpha, red, green, blue);
     }
 
     protected void handleStateChanged(QSTile.State state) {

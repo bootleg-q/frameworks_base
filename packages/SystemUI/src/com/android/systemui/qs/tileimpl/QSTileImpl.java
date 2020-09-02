@@ -440,29 +440,16 @@ public abstract class QSTileImpl<TState extends State> implements QSTile, Lifecy
 
     public static int getColorForState(Context context, int state) {
 
-        boolean enableQsTileTinting = context.getResources().getBoolean(R.bool.config_enable_qs_tile_tinting);
-
         switch (state) {
             case Tile.STATE_UNAVAILABLE:
-                if (!enableQsTileTinting) {
-                    return Utils.getDisabled(context,
-                        Utils.getColorAttrDefaultColor(context, android.R.attr.textColorSecondary));
-                } else {
-                    return Utils.getDisabled(context,
-                        context.getColor(R.color.qs_tiles_unavailable_tint));
-                }
+                return Utils.getDisabled(context,
+                    Utils.getColorAttrDefaultColor(context, android.R.attr.textColorSecondary));
+
             case Tile.STATE_INACTIVE:
-                if (!enableQsTileTinting) {
-                    return Utils.getColorAttrDefaultColor(context, android.R.attr.textColorSecondary);
-                } else {
-                    return context.getColor(R.color.qs_tiles_inactive_tint);
-                }
+                return Utils.getColorAttrDefaultColor(context, android.R.attr.textColorSecondary);
+
             case Tile.STATE_ACTIVE:
-                if (!enableQsTileTinting) {
-                    return Utils.getColorAttrDefaultColor(context, android.R.attr.colorPrimary);
-                } else {
-                    return context.getColor(R.color.qs_tiles_active_tint);
-                }
+                return Utils.getColorAttrDefaultColor(context, android.R.attr.colorAccent);
             default:
                 Log.e("QSTile", "Invalid state " + state);
                 return 0;
