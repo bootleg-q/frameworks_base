@@ -41,10 +41,6 @@
         <item>emergency</item>
     </string-array>
 
-     <!-- System font packages (overlay in vendor) -->
-    <string-array name="config_fontPackages" translatable="false">
-    </string-array>
-
     <!-- LiveDisplay -->
     <string-array name="live_display_entries" translatable="false">
         <item>@string/live_display_auto</item>
