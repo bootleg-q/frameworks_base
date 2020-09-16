@@ -217,4 +217,8 @@ public class BubbleClockController implements ClockPlugin {
         return true;
     }
 
+    @Override
+    public void setTypeface(Typeface tf) {
+        mLockClock.setTypeface(tf);
+    }
 }

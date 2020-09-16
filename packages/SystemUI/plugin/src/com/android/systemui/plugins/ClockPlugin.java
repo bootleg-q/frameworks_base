@@ -145,4 +145,8 @@ public interface ClockPlugin extends Plugin {
         return true;
     }
 
+    /**
+     * Allows Setting the Clock Typeface
+     */
+    default void setTypeface(Typeface tf) {}
 }

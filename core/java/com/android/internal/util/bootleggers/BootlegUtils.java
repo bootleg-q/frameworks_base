@@ -60,7 +60,6 @@ import android.view.WindowManagerGlobal;
 
 import com.android.internal.statusbar.IStatusBarService;
 
-import java.util.List;
 import java.util.Locale;
 
 public class BootlegUtils {
