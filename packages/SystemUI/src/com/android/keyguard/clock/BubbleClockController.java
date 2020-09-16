@@ -216,9 +216,4 @@ public class BubbleClockController implements ClockPlugin {
     public boolean shouldShowStatusArea() {
         return true;
     }
-
-    @Override
-    public void setTypeface(Typeface tf) {
-        mLockClock.setTypeface(tf);
-    }
 }

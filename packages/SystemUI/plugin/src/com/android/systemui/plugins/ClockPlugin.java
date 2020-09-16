@@ -144,9 +144,4 @@ public interface ClockPlugin extends Plugin {
     default boolean shouldShowStatusArea() {
         return true;
     }
-
-    /**
-     * Allows Setting the Clock Typeface
-     */
-    default void setTypeface(Typeface tf) {}
 }
