@@ -5643,14 +5643,14 @@ public class NotificationStackScrollLayout extends ViewGroup implements ScrollAd
                 R.layout.status_bar_notification_footer, this, false);
         footerView.setDismissButtonClickListener(v -> {
             mMetricsLogger.action(MetricsEvent.ACTION_DISMISS_ALL_NOTES);
-            clearNotifications(ROWS_ALL, true /* closeShade */, false/*forceToLeft*/);
+            clearNotifications(ROWS_ALL, true /* closeShade */, false /*forceToLeft*/);
         });
         footerView.setManageButtonClickListener(this::manageNotifications);
         setFooterView(footerView);
 
         StatusBarWindowView.setDismissAllOnClickListener(v -> {
             mMetricsLogger.action(MetricsEvent.ACTION_DISMISS_ALL_NOTES);
-            clearNotifications(ROWS_ALL, true /* closeShade */);
+            clearNotifications(ROWS_ALL, true /* closeShade */, false /*forceToLeft*/);
         });
     }
 
