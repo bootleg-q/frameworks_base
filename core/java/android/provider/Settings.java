@@ -10833,6 +10833,11 @@ public final class Settings {
          */
         public static final String STATUS_BAR_CLOCK_SECONDS = "status_bar_clock_seconds";
 
+	/**
+         * @hide
+         */
+        public static final String DEVICE_HOSTNAME = "device_hostname";
+
         /**
          * Boolean value whether to link ringtone and notification volume
          * @hide
